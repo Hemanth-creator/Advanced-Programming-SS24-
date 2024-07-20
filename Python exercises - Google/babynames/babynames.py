@@ -35,19 +35,13 @@ Suggested milestones for incremental development:
 """
 
 def extract_names(filename):
-  """
-  Given a file name for baby.html, returns a list starting with the year string
-  followed by the name-rank strings in alphabetical order.
-  ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
-  """
+
   names = []
 
   # Open and read the file.
   with open(filename, 'rt', encoding='utf-8') as f:
     text = f.read()
 
-  # Could process the file line-by-line, but regex on the whole text
-  # at once is even easier.
 
   # Get the year.
   year_match = re.search(r'Popularity\sin\s(\d\d\d\d)', text)
@@ -74,10 +68,6 @@ def extract_names(filename):
       names_to_rank[boyname] = rank
     if girlname not in names_to_rank:
       names_to_rank[girlname] = rank
-  # You can also write:
-  # for rank, boyname, girlname in tuples:
-  #   ...
-  # To unpack the tuples inside a for-loop.
 
   # Get the names, sorted in the right order
   sorted_names = sorted(names_to_rank.keys())
